@@ -34,50 +34,50 @@ $config = [
         [
             'url' => 'https://resistandheal.substack.com/feed',
             'name' => "Wes' Blogs",
-            'slug' => 'substack', 
+            'slug' => 'substack',
             'color' => '#ff6719',
             'icon' => '✍️',
-            'link' => 'https://resistandheal.substack.com'
+            'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
         [
             'url' => 'https://edtechsr.substack.com/feed',
             'name' => "Wes' Blogs",
-            'slug' => 'substack', 
+            'slug' => 'substack',
             'color' => '#ff6719',
             'icon' => '✍️',
-            'link' => 'https://edtechsr.substack.com'
+            'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
         [
             'url' => 'https://indivisibleclt.substack.com/feed',
             'name' => "Wes' Blogs",
-            'slug' => 'substack', 
+            'slug' => 'substack',
             'color' => '#ff6719',
             'icon' => '✍️',
-            'link' => 'https://indivisibleclt.substack.com'
+            'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
         [
             'url' => 'https://confrontingwhiteness.substack.com/feed',
             'name' => "Wes' Blogs",
-            'slug' => 'substack', 
+            'slug' => 'substack',
             'color' => '#ff6719',
             'icon' => '✍️',
-            'link' => 'https://confrontingwhiteness.substack.com'
+            'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
         [
             'url' => 'https://wfryer.substack.com/feed',
             'name' => "Wes' Blogs",
-            'slug' => 'substack', 
+            'slug' => 'substack',
             'color' => '#ff6719',
             'icon' => '✍️',
-            'link' => 'https://wfryer.substack.com'
+            'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
         [
             'url' => 'https://healourculture.substack.com/feed',
             'name' => "Wes' Blogs",
-            'slug' => 'substack', 
+            'slug' => 'substack',
             'color' => '#ff6719',
             'icon' => '✍️',
-            'link' => 'https://healourculture.substack.com'
+            'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
         [
             'url' => 'https://mastodon.social/@federatedreader.rss',
@@ -879,19 +879,19 @@ $html = <<<HTML
             box-shadow: 0 4px 15px rgba(225, 40, 40, 0.4);
         }
 
-        /* Substack/Blogs button gets orange background */
+        /* Substack/Blogs button gets light blue background */
         .filter-btn.substack-btn {
-            background: linear-gradient(135deg, #ff6719 0%, #ff8844 100%);
+            background: linear-gradient(135deg, #87ceeb 0%, #5eb5d9 100%);
             color: white;
         }
 
         .filter-btn.substack-btn:hover {
-            background: linear-gradient(135deg, #ff7a33 0%, #ff9955 100%);
+            background: linear-gradient(135deg, #98d5f5 0%, #6fc6e9 100%);
         }
 
         .filter-btn.substack-btn.active {
-            background: linear-gradient(135deg, #e85a10 0%, #ff6719 100%);
-            box-shadow: 0 4px 15px rgba(255, 103, 25, 0.4);
+            background: linear-gradient(135deg, #76bdd9 0%, #4da5c9 100%);
+            box-shadow: 0 4px 15px rgba(135, 206, 235, 0.4);
         }
 
         /* Mastodon button gets purple/blue background */
@@ -909,19 +909,19 @@ $html = <<<HTML
             box-shadow: 0 4px 15px rgba(99, 100, 255, 0.4);
         }
 
-        /* CookWithWes button gets light purple background */
+        /* CookWithWes button gets orange background matching posts */
         .filter-btn.cookwithwes-btn {
-            background: linear-gradient(135deg, #b19cd9 0%, #d8bfd8 100%);
+            background: linear-gradient(135deg, #e85d04 0%, #ff8c42 100%);
             color: white;
         }
 
         .filter-btn.cookwithwes-btn:hover {
-            background: linear-gradient(135deg, #c2ade3 0%, #e3d0e3 100%);
+            background: linear-gradient(135deg, #f96e15 0%, #ffa053 100%);
         }
 
         .filter-btn.cookwithwes-btn.active {
-            background: linear-gradient(135deg, #a08bc8 0%, #c7acd7 100%);
-            box-shadow: 0 4px 15px rgba(177, 156, 217, 0.4);
+            background: linear-gradient(135deg, #d74c00 0%, #ee7b31 100%);
+            box-shadow: 0 4px 15px rgba(232, 93, 4, 0.4);
         }
 
         /* Feed Grid */
