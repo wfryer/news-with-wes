@@ -79,6 +79,31 @@ $config = [
             'icon' => '✍️',
             'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
+        // WordPress blogs
+        [
+            'url' => 'https://www.speedofcreativity.org/feed',
+            'name' => "Wes' Blogs",
+            'slug' => 'substack',
+            'color' => '#ff6719',
+            'icon' => '✍️',
+            'link' => 'https://wesfryer.com/substack-newsletters/'
+        ],
+        [
+            'url' => 'https://learningsigns.speedofcreativity.org/feed',
+            'name' => "Wes' Blogs",
+            'slug' => 'substack',
+            'color' => '#ff6719',
+            'icon' => '✍️',
+            'link' => 'https://wesfryer.com/substack-newsletters/'
+        ],
+        [
+            'url' => 'https://pocketshare.speedofcreativity.org/feed',
+            'name' => "Wes' Blogs",
+            'slug' => 'substack',
+            'color' => '#ff6719',
+            'icon' => '✍️',
+            'link' => 'https://wesfryer.com/substack-newsletters/'
+        ],
         [
             'url' => 'https://mastodon.social/@federatedreader.rss',
             'name' => '@FederatedReader',
