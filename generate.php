@@ -33,7 +33,7 @@ $config = [
         // Wes' Substacks - all use slug 'substack' so they group together
         [
             'url' => 'https://resistandheal.substack.com/feed',
-            'name' => "Wes' Substacks",
+            'name' => "Wes' Blogs",
             'slug' => 'substack', 
             'color' => '#ff6719',
             'icon' => '✍️',
@@ -41,7 +41,7 @@ $config = [
         ],
         [
             'url' => 'https://edtechsr.substack.com/feed',
-            'name' => "Wes' Substacks",
+            'name' => "Wes' Blogs",
             'slug' => 'substack', 
             'color' => '#ff6719',
             'icon' => '✍️',
@@ -49,7 +49,7 @@ $config = [
         ],
         [
             'url' => 'https://indivisibleclt.substack.com/feed',
-            'name' => "Wes' Substacks",
+            'name' => "Wes' Blogs",
             'slug' => 'substack', 
             'color' => '#ff6719',
             'icon' => '✍️',
@@ -57,7 +57,7 @@ $config = [
         ],
         [
             'url' => 'https://confrontingwhiteness.substack.com/feed',
-            'name' => "Wes' Substacks",
+            'name' => "Wes' Blogs",
             'slug' => 'substack', 
             'color' => '#ff6719',
             'icon' => '✍️',
@@ -65,7 +65,7 @@ $config = [
         ],
         [
             'url' => 'https://wfryer.substack.com/feed',
-            'name' => "Wes' Substacks",
+            'name' => "Wes' Blogs",
             'slug' => 'substack', 
             'color' => '#ff6719',
             'icon' => '✍️',
@@ -73,7 +73,7 @@ $config = [
         ],
         [
             'url' => 'https://healourculture.substack.com/feed',
-            'name' => "Wes' Substacks",
+            'name' => "Wes' Blogs",
             'slug' => 'substack', 
             'color' => '#ff6719',
             'icon' => '✍️',
@@ -860,7 +860,7 @@ $html = <<<HTML
         }
 
         .filter-btn.active {
-            background: linear-gradient(135deg, var(--jetsons-blue) 0%, var(--jetsons-purple) 100%);
+            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
             color: white;
         }
 
@@ -879,7 +879,7 @@ $html = <<<HTML
             box-shadow: 0 4px 15px rgba(225, 40, 40, 0.4);
         }
 
-        /* Substack button gets orange background */
+        /* Substack/Blogs button gets orange background */
         .filter-btn.substack-btn {
             background: linear-gradient(135deg, #ff6719 0%, #ff8844 100%);
             color: white;
@@ -892,6 +892,36 @@ $html = <<<HTML
         .filter-btn.substack-btn.active {
             background: linear-gradient(135deg, #e85a10 0%, #ff6719 100%);
             box-shadow: 0 4px 15px rgba(255, 103, 25, 0.4);
+        }
+
+        /* Mastodon button gets purple/blue background */
+        .filter-btn.mastodon-btn {
+            background: linear-gradient(135deg, #6364ff 0%, #8b8cff 100%);
+            color: white;
+        }
+
+        .filter-btn.mastodon-btn:hover {
+            background: linear-gradient(135deg, #7475ff 0%, #9c9dff 100%);
+        }
+
+        .filter-btn.mastodon-btn.active {
+            background: linear-gradient(135deg, #5253ee 0%, #7a7bff 100%);
+            box-shadow: 0 4px 15px rgba(99, 100, 255, 0.4);
+        }
+
+        /* CookWithWes button gets light purple background */
+        .filter-btn.cookwithwes-btn {
+            background: linear-gradient(135deg, #b19cd9 0%, #d8bfd8 100%);
+            color: white;
+        }
+
+        .filter-btn.cookwithwes-btn:hover {
+            background: linear-gradient(135deg, #c2ade3 0%, #e3d0e3 100%);
+        }
+
+        .filter-btn.cookwithwes-btn.active {
+            background: linear-gradient(135deg, #a08bc8 0%, #c7acd7 100%);
+            box-shadow: 0 4px 15px rgba(177, 156, 217, 0.4);
         }
 
         /* Feed Grid */
@@ -1176,9 +1206,9 @@ $html = <<<HTML
         <div class="filters">
             <button class="filter-btn active" data-source="all">🌐 All Sources</button>
             <button class="filter-btn flipboard-btn" data-source="flipboard">🎴 Flipboard</button>
-            <button class="filter-btn substack-btn" data-source="substack">✍️ Wes' Substacks</button>
-            <button class="filter-btn" data-source="mastodon">📡 @FederatedReader</button>
-            <button class="filter-btn" data-source="cookwithwes">🔥 @CookWithWes</button>
+            <button class="filter-btn substack-btn" data-source="substack">✍️ Wes' Blogs</button>
+            <button class="filter-btn mastodon-btn" data-source="mastodon">📡 @FederatedReader</button>
+            <button class="filter-btn cookwithwes-btn" data-source="cookwithwes">🔥 @CookWithWes</button>
         </div>
 
         <!-- Feed Items -->
