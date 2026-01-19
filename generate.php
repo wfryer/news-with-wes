@@ -1360,7 +1360,7 @@ $html .= <<<HTML
 
         <!-- Footer -->
         <footer class="footer">
-            <p>Powered by open web feeds • Curated by <a href="https://wesfryer.com">Wes Fryer</a></p>
+            <p>Powered by open web feeds • Shared on <a href="https://github.com/wfryer/news-with-wes/tree/main">Wes Fryer's GitHub</a></p>
             <div class="footer-links">
                 <a href="https://healourculture.org">🖐️ Heal Our Culture</a>
                 <a href="https://resistandheal.com">❤️ Resist and Heal</a>
