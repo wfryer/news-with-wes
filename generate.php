@@ -35,7 +35,7 @@ $config = [
             'url' => 'https://resistandheal.substack.com/feed',
             'name' => "Wes' Blogs",
             'slug' => 'substack',
-            'color' => '#ff6719',
+            'color' => '#0000FF',
             'icon' => '✍️',
             'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
@@ -43,7 +43,7 @@ $config = [
             'url' => 'https://edtechsr.substack.com/feed',
             'name' => "Wes' Blogs",
             'slug' => 'substack',
-            'color' => '#ff6719',
+            'color' => '#0000FF',
             'icon' => '✍️',
             'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
@@ -51,7 +51,7 @@ $config = [
             'url' => 'https://indivisibleclt.substack.com/feed',
             'name' => "Wes' Blogs",
             'slug' => 'substack',
-            'color' => '#ff6719',
+            'color' => '#0000FF',
             'icon' => '✍️',
             'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
@@ -59,7 +59,7 @@ $config = [
             'url' => 'https://confrontingwhiteness.substack.com/feed',
             'name' => "Wes' Blogs",
             'slug' => 'substack',
-            'color' => '#ff6719',
+            'color' => '#0000FF',
             'icon' => '✍️',
             'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
@@ -67,7 +67,7 @@ $config = [
             'url' => 'https://wfryer.substack.com/feed',
             'name' => "Wes' Blogs",
             'slug' => 'substack',
-            'color' => '#ff6719',
+            'color' => '#0000FF',
             'icon' => '✍️',
             'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
@@ -75,7 +75,7 @@ $config = [
             'url' => 'https://healourculture.substack.com/feed',
             'name' => "Wes' Blogs",
             'slug' => 'substack',
-            'color' => '#ff6719',
+            'color' => '#0000FF',
             'icon' => '✍️',
             'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
@@ -84,7 +84,7 @@ $config = [
             'url' => 'https://www.speedofcreativity.org/feed',
             'name' => "Wes' Blogs",
             'slug' => 'substack',
-            'color' => '#ff6719',
+            'color' => '#0000FF',
             'icon' => '✍️',
             'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
@@ -92,7 +92,7 @@ $config = [
             'url' => 'https://learningsigns.speedofcreativity.org/feed',
             'name' => "Wes' Blogs",
             'slug' => 'substack',
-            'color' => '#ff6719',
+            'color' => '#0000FF',
             'icon' => '✍️',
             'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
@@ -100,7 +100,15 @@ $config = [
             'url' => 'https://pocketshare.speedofcreativity.org/feed',
             'name' => "Wes' Blogs",
             'slug' => 'substack',
-            'color' => '#ff6719',
+            'color' => '#0000FF',
+            'icon' => '✍️',
+            'link' => 'https://wesfryer.com/substack-newsletters/'
+        ],
+        [
+            'url' => 'https://healourculture.org/feed',
+            'name' => "Wes' Blogs",
+            'slug' => 'substack',
+            'color' => '#0000FF',
             'icon' => '✍️',
             'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
@@ -904,19 +912,19 @@ $html = <<<HTML
             box-shadow: 0 4px 15px rgba(225, 40, 40, 0.4);
         }
 
-        /* Substack/Blogs button gets light blue background */
+        /* Substack/Blogs button gets blue background */
         .filter-btn.substack-btn {
-            background: linear-gradient(135deg, #87ceeb 0%, #5eb5d9 100%);
+            background: linear-gradient(135deg, #0000FF 0%, #3333FF 100%);
             color: white;
         }
 
         .filter-btn.substack-btn:hover {
-            background: linear-gradient(135deg, #98d5f5 0%, #6fc6e9 100%);
+            background: linear-gradient(135deg, #1111FF 0%, #4444FF 100%);
         }
 
         .filter-btn.substack-btn.active {
-            background: linear-gradient(135deg, #76bdd9 0%, #4da5c9 100%);
-            box-shadow: 0 4px 15px rgba(135, 206, 235, 0.4);
+            background: linear-gradient(135deg, #0000EE 0%, #2222FF 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.4);
         }
 
         /* Mastodon button gets purple/blue background */
@@ -1018,7 +1026,7 @@ $html = <<<HTML
         }
 
         .source-badge.substack {
-            background: linear-gradient(135deg, #ff6719 0%, #ff8844 100%);
+            background: linear-gradient(135deg, #0000FF 0%, #3333FF 100%);
             color: white;
         }
 
