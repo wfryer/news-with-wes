@@ -27,7 +27,7 @@ $config = [
             'name' => 'Flipboard',
             'slug' => 'flipboard',
             'color' => '#e12828',
-            'icon' => '📰',
+            'icon' => '🎴',
             'link' => 'https://flipboard.com/@wfryer/ireading-by-wes-20i475olz'
         ],
         // Wes' Substacks - all use slug 'substack' so they group together
@@ -1165,7 +1165,7 @@ $html = <<<HTML
         <!-- Filters -->
         <div class="filters">
             <button class="filter-btn active" data-source="all">🌐 All Sources</button>
-            <button class="filter-btn flipboard-btn" data-source="flipboard">📰 Flipboard</button>
+            <button class="filter-btn flipboard-btn" data-source="flipboard">🎴 Flipboard</button>
             <button class="filter-btn substack-btn" data-source="substack">✍️ Wes' Substacks</button>
             <button class="filter-btn" data-source="mastodon">📡 @FederatedReader</button>
             <button class="filter-btn" data-source="cookwithwes">🔥 @CookWithWes</button>
