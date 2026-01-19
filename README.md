@@ -37,7 +37,8 @@ This project functions as a background engine that fetches content from multiple
 ├── banner.jpg        # Custom project header image.
 ├── error.log         # Log for monitoring performance and cron job errors.
 └── cache/            # Directory for storing fetched images and feed data.
-⚙️ Installation & Setup
+
+## ⚙️ Installation & Setup
 1. Upload Files
 Upload the project files to your server directory. Ensure the cache/ directory exists and is writable by the server.
 
@@ -51,7 +52,7 @@ Frequency: 0,30 * * * *
 
 Command Template: [path_to_php_binary] /[path_to_project]/generate.php >> /[path_to_project]/error.log 2>&1
 
-🔧 Configuration
+## 🔧 Configuration
 To add or modify feeds, edit the $feeds array in generate.php. Each feed entry supports custom icons, colors, and unique slugs for the sidebar filtering system.
 
 Current primary categories:
