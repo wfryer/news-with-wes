@@ -625,7 +625,17 @@ foreach ($config['feeds'] as $feed_config) {
     usort($items, function($a, $b) {
         return $b['date'] - $a['date'];
     });
-    
+
+    // Debug: Log first 3 item dates for Substacks
+    if ($feed_config['slug'] === 'substack' && count($items) > 0) {
+        echo "  DEBUG - First 3 dates from {$feed_config['url']}:\n";
+        for ($i = 0; $i < min(3, count($items)); $i++) {
+            $debug_date = date('Y-m-d H:i:s', $items[$i]['date']);
+            $debug_title = substr($items[$i]['title'], 0, 50);
+            echo "    [{$debug_date}] {$debug_title}\n";
+        }
+    }
+
     // Limit to max_items_per_feed from this source
     $items = array_slice($items, 0, $config['max_items_per_feed']);
     $limited_count = count($items);
