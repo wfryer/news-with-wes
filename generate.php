@@ -27,57 +27,90 @@ $config = [
             'name' => 'Flipboard',
             'slug' => 'flipboard',
             'color' => '#e12828',
-            'icon' => '📰',
+            'icon' => '🎴',
             'link' => 'https://flipboard.com/@wfryer/ireading-by-wes-20i475olz'
         ],
         // Wes' Substacks - all use slug 'substack' so they group together
         [
             'url' => 'https://resistandheal.substack.com/feed',
-            'name' => "Wes' Substacks",
-            'slug' => 'substack', 
-            'color' => '#ff6719',
+            'name' => "Wes' Blogs",
+            'slug' => 'substack',
+            'color' => '#0000FF',
             'icon' => '✍️',
-            'link' => 'https://resistandheal.substack.com'
+            'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
         [
             'url' => 'https://edtechsr.substack.com/feed',
-            'name' => "Wes' Substacks",
-            'slug' => 'substack', 
-            'color' => '#ff6719',
+            'name' => "Wes' Blogs",
+            'slug' => 'substack',
+            'color' => '#0000FF',
             'icon' => '✍️',
-            'link' => 'https://edtechsr.substack.com'
+            'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
         [
             'url' => 'https://indivisibleclt.substack.com/feed',
-            'name' => "Wes' Substacks",
-            'slug' => 'substack', 
-            'color' => '#ff6719',
+            'name' => "Wes' Blogs",
+            'slug' => 'substack',
+            'color' => '#0000FF',
             'icon' => '✍️',
-            'link' => 'https://indivisibleclt.substack.com'
+            'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
         [
             'url' => 'https://confrontingwhiteness.substack.com/feed',
-            'name' => "Wes' Substacks",
-            'slug' => 'substack', 
-            'color' => '#ff6719',
+            'name' => "Wes' Blogs",
+            'slug' => 'substack',
+            'color' => '#0000FF',
             'icon' => '✍️',
-            'link' => 'https://confrontingwhiteness.substack.com'
+            'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
         [
             'url' => 'https://wfryer.substack.com/feed',
-            'name' => "Wes' Substacks",
-            'slug' => 'substack', 
-            'color' => '#ff6719',
+            'name' => "Wes' Blogs",
+            'slug' => 'substack',
+            'color' => '#0000FF',
             'icon' => '✍️',
-            'link' => 'https://wfryer.substack.com'
+            'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
         [
             'url' => 'https://healourculture.substack.com/feed',
-            'name' => "Wes' Substacks",
-            'slug' => 'substack', 
-            'color' => '#ff6719',
+            'name' => "Wes' Blogs",
+            'slug' => 'substack',
+            'color' => '#0000FF',
             'icon' => '✍️',
-            'link' => 'https://healourculture.substack.com'
+            'link' => 'https://wesfryer.com/substack-newsletters/'
+        ],
+        // WordPress blogs
+        [
+            'url' => 'https://www.speedofcreativity.org/feed',
+            'name' => "Wes' Blogs",
+            'slug' => 'substack',
+            'color' => '#0000FF',
+            'icon' => '✍️',
+            'link' => 'https://wesfryer.com/substack-newsletters/'
+        ],
+        [
+            'url' => 'https://learningsigns.speedofcreativity.org/feed',
+            'name' => "Wes' Blogs",
+            'slug' => 'substack',
+            'color' => '#0000FF',
+            'icon' => '✍️',
+            'link' => 'https://wesfryer.com/substack-newsletters/'
+        ],
+        [
+            'url' => 'https://pocketshare.speedofcreativity.org/feed',
+            'name' => "Wes' Blogs",
+            'slug' => 'substack',
+            'color' => '#0000FF',
+            'icon' => '✍️',
+            'link' => 'https://wesfryer.com/substack-newsletters/'
+        ],
+        [
+            'url' => 'https://healourculture.org/feed',
+            'name' => "Wes' Blogs",
+            'slug' => 'substack',
+            'color' => '#0000FF',
+            'icon' => '✍️',
+            'link' => 'https://wesfryer.com/substack-newsletters/'
         ],
         [
             'url' => 'https://mastodon.social/@federatedreader.rss',
@@ -94,6 +127,24 @@ $config = [
             'color' => '#e85d04',
             'icon' => '🔥',
             'link' => 'https://food.wesfryer.com'
+        ],
+        // YouTube - CookWithWes Videos
+        [
+            'url' => 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLcCkQ9mj_ok_j1w8Vx8my3HN3VzmTi4BC',
+            'name' => '@CookWithWes',
+            'slug' => 'cookwithwes',
+            'color' => '#e85d04',
+            'icon' => '🔥',
+            'link' => 'https://www.youtube.com/playlist?list=PLcCkQ9mj_ok_j1w8Vx8my3HN3VzmTi4BC'
+        ],
+        // YouTube - Wes' Video Updates
+        [
+            'url' => 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLcCkQ9mj_ok-Kl-3F7YTnDPZUn1NCWUfQ',
+            'name' => "Wes' Video Updates",
+            'slug' => 'youtube',
+            'color' => '#FF0000',
+            'icon' => '▶️',
+            'link' => 'https://www.youtube.com/playlist?list=PLcCkQ9mj_ok-Kl-3F7YTnDPZUn1NCWUfQ'
         ]
     ],
     
@@ -625,7 +676,17 @@ foreach ($config['feeds'] as $feed_config) {
     usort($items, function($a, $b) {
         return $b['date'] - $a['date'];
     });
-    
+
+    // Debug: Log first 3 item dates for Substacks
+    if ($feed_config['slug'] === 'substack' && count($items) > 0) {
+        echo "  DEBUG - First 3 dates from {$feed_config['url']}:\n";
+        for ($i = 0; $i < min(3, count($items)); $i++) {
+            $debug_date = date('Y-m-d H:i:s', $items[$i]['date']);
+            $debug_title = substr($items[$i]['title'], 0, 50);
+            echo "    [{$debug_date}] {$debug_title}\n";
+        }
+    }
+
     // Limit to max_items_per_feed from this source
     $items = array_slice($items, 0, $config['max_items_per_feed']);
     $limited_count = count($items);
@@ -850,23 +911,88 @@ $html = <<<HTML
         }
 
         .filter-btn.active {
-            background: linear-gradient(135deg, var(--jetsons-blue) 0%, var(--jetsons-purple) 100%);
+            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
             color: white;
         }
 
-        /* Substack button gets orange background */
+        /* Flipboard button gets red background */
+        .filter-btn.flipboard-btn {
+            background: linear-gradient(135deg, #e12828 0%, #ff4444 100%);
+            color: white;
+        }
+
+        .filter-btn.flipboard-btn:hover {
+            background: linear-gradient(135deg, #f53333 0%, #ff5555 100%);
+        }
+
+        .filter-btn.flipboard-btn.active {
+            background: linear-gradient(135deg, #c91f1f 0%, #e12828 100%);
+            box-shadow: 0 4px 15px rgba(225, 40, 40, 0.4);
+        }
+
+        /* Substack/Blogs button gets blue background */
         .filter-btn.substack-btn {
-            background: linear-gradient(135deg, #ff6719 0%, #ff8844 100%);
+            background: linear-gradient(135deg, #0000FF 0%, #3333FF 100%);
             color: white;
         }
 
         .filter-btn.substack-btn:hover {
-            background: linear-gradient(135deg, #ff7a33 0%, #ff9955 100%);
+            background: linear-gradient(135deg, #1111FF 0%, #4444FF 100%);
         }
 
         .filter-btn.substack-btn.active {
-            background: linear-gradient(135deg, #e85a10 0%, #ff6719 100%);
-            box-shadow: 0 4px 15px rgba(255, 103, 25, 0.4);
+            background: linear-gradient(135deg, #0000EE 0%, #2222FF 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.4);
+        }
+
+        /* Mastodon button gets purple/blue background */
+        .filter-btn.mastodon-btn {
+            background: linear-gradient(135deg, #6364ff 0%, #8b8cff 100%);
+            color: white;
+        }
+
+        .filter-btn.mastodon-btn:hover {
+            background: linear-gradient(135deg, #7475ff 0%, #9c9dff 100%);
+        }
+
+        .filter-btn.mastodon-btn.active {
+            background: linear-gradient(135deg, #5253ee 0%, #7a7bff 100%);
+            box-shadow: 0 4px 15px rgba(99, 100, 255, 0.4);
+        }
+
+        /* CookWithWes button gets orange background matching posts */
+        .filter-btn.cookwithwes-btn {
+            background: linear-gradient(135deg, #e85d04 0%, #ff8c42 100%);
+            color: white;
+        }
+
+        .filter-btn.cookwithwes-btn:hover {
+            background: linear-gradient(135deg, #f96e15 0%, #ffa053 100%);
+        }
+
+        .filter-btn.cookwithwes-btn.active {
+            background: linear-gradient(135deg, #d74c00 0%, #ee7b31 100%);
+            box-shadow: 0 4px 15px rgba(232, 93, 4, 0.4);
+        }
+
+        /* YouTube button gets red text on white with red outline */
+        .filter-btn.youtube-btn {
+            background: white;
+            color: #FF0000;
+            border: 2px solid #FF0000;
+        }
+
+        .filter-btn.youtube-btn:hover {
+            background: #fff5f5;
+            color: #cc0000;
+            border-color: #cc0000;
+        }
+
+        .filter-btn.youtube-btn.active {
+            background: #FF0000;
+            color: white;
+            border-color: #FF0000;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
         }
 
         /* Feed Grid */
@@ -938,7 +1064,7 @@ $html = <<<HTML
         }
 
         .source-badge.substack {
-            background: linear-gradient(135deg, #ff6719 0%, #ff8844 100%);
+            background: linear-gradient(135deg, #0000FF 0%, #3333FF 100%);
             color: white;
         }
 
@@ -950,6 +1076,12 @@ $html = <<<HTML
         .source-badge.cookwithwes {
             background: linear-gradient(135deg, #e85d04 0%, #ff8c42 100%);
             color: white;
+        }
+
+        .source-badge.youtube {
+            background: white;
+            color: #FF0000;
+            border: 2px solid #FF0000;
         }
 
         .card-date {
@@ -1150,10 +1282,11 @@ $html = <<<HTML
         <!-- Filters -->
         <div class="filters">
             <button class="filter-btn active" data-source="all">🌐 All Sources</button>
-            <button class="filter-btn" data-source="flipboard">📰 Flipboard</button>
-            <button class="filter-btn substack-btn" data-source="substack">✍️ Wes' Substacks</button>
-            <button class="filter-btn" data-source="mastodon">📡 @FederatedReader</button>
-            <button class="filter-btn" data-source="cookwithwes">🔥 @CookWithWes</button>
+            <button class="filter-btn flipboard-btn" data-source="flipboard">🎴 Flipboard</button>
+            <button class="filter-btn substack-btn" data-source="substack">✍️ Wes' Blogs</button>
+            <button class="filter-btn mastodon-btn" data-source="mastodon">📡 @FederatedReader</button>
+            <button class="filter-btn cookwithwes-btn" data-source="cookwithwes">🔥 @CookWithWes</button>
+            <button class="filter-btn youtube-btn" data-source="youtube">▶️ Wes' Video Updates</button>
         </div>
 
         <!-- Feed Items -->
