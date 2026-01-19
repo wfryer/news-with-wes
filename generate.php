@@ -854,6 +854,21 @@ $html = <<<HTML
             color: white;
         }
 
+        /* Flipboard button gets red background */
+        .filter-btn.flipboard-btn {
+            background: linear-gradient(135deg, #e12828 0%, #ff4444 100%);
+            color: white;
+        }
+
+        .filter-btn.flipboard-btn:hover {
+            background: linear-gradient(135deg, #f53333 0%, #ff5555 100%);
+        }
+
+        .filter-btn.flipboard-btn.active {
+            background: linear-gradient(135deg, #c91f1f 0%, #e12828 100%);
+            box-shadow: 0 4px 15px rgba(225, 40, 40, 0.4);
+        }
+
         /* Substack button gets orange background */
         .filter-btn.substack-btn {
             background: linear-gradient(135deg, #ff6719 0%, #ff8844 100%);
@@ -1150,7 +1165,7 @@ $html = <<<HTML
         <!-- Filters -->
         <div class="filters">
             <button class="filter-btn active" data-source="all">🌐 All Sources</button>
-            <button class="filter-btn" data-source="flipboard">📰 Flipboard</button>
+            <button class="filter-btn flipboard-btn" data-source="flipboard">📰 Flipboard</button>
             <button class="filter-btn substack-btn" data-source="substack">✍️ Wes' Substacks</button>
             <button class="filter-btn" data-source="mastodon">📡 @FederatedReader</button>
             <button class="filter-btn" data-source="cookwithwes">🔥 @CookWithWes</button>
