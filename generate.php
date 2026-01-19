@@ -127,6 +127,24 @@ $config = [
             'color' => '#e85d04',
             'icon' => '🔥',
             'link' => 'https://food.wesfryer.com'
+        ],
+        // YouTube - CookWithWes Videos
+        [
+            'url' => 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLcCkQ9mj_ok_j1w8Vx8my3HN3VzmTi4BC',
+            'name' => '@CookWithWes',
+            'slug' => 'cookwithwes',
+            'color' => '#e85d04',
+            'icon' => '🔥',
+            'link' => 'https://www.youtube.com/playlist?list=PLcCkQ9mj_ok_j1w8Vx8my3HN3VzmTi4BC'
+        ],
+        // YouTube - Wes' Video Updates
+        [
+            'url' => 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLcCkQ9mj_ok-Kl-3F7YTnDPZUn1NCWUfQ',
+            'name' => "Wes' Video Updates",
+            'slug' => 'youtube',
+            'color' => '#FF0000',
+            'icon' => '▶️',
+            'link' => 'https://www.youtube.com/playlist?list=PLcCkQ9mj_ok-Kl-3F7YTnDPZUn1NCWUfQ'
         ]
     ],
     
@@ -957,6 +975,26 @@ $html = <<<HTML
             box-shadow: 0 4px 15px rgba(232, 93, 4, 0.4);
         }
 
+        /* YouTube button gets red text on white with red outline */
+        .filter-btn.youtube-btn {
+            background: white;
+            color: #FF0000;
+            border: 2px solid #FF0000;
+        }
+
+        .filter-btn.youtube-btn:hover {
+            background: #fff5f5;
+            color: #cc0000;
+            border-color: #cc0000;
+        }
+
+        .filter-btn.youtube-btn.active {
+            background: #FF0000;
+            color: white;
+            border-color: #FF0000;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+        }
+
         /* Feed Grid */
         .feed-grid {
             display: flex;
@@ -1038,6 +1076,12 @@ $html = <<<HTML
         .source-badge.cookwithwes {
             background: linear-gradient(135deg, #e85d04 0%, #ff8c42 100%);
             color: white;
+        }
+
+        .source-badge.youtube {
+            background: white;
+            color: #FF0000;
+            border: 2px solid #FF0000;
         }
 
         .card-date {
@@ -1242,6 +1286,7 @@ $html = <<<HTML
             <button class="filter-btn substack-btn" data-source="substack">✍️ Wes' Blogs</button>
             <button class="filter-btn mastodon-btn" data-source="mastodon">📡 @FederatedReader</button>
             <button class="filter-btn cookwithwes-btn" data-source="cookwithwes">🔥 @CookWithWes</button>
+            <button class="filter-btn youtube-btn" data-source="youtube">▶️ Wes' Video Updates</button>
         </div>
 
         <!-- Feed Items -->
