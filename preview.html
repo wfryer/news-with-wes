@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News with Wes Fryer</title>
+    <meta name="description" content="Curated news and articles from Flipboard, Substack, and Mastodon - by Wes Fryer">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://wesfryer.com/news/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="News with Wes Fryer">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wesfryer.com/news/">
+    <meta property="og:image" content="https://wesfryer.com/news/banner.jpg">
+    
+    <!-- Google Fonts - Jetsons-inspired fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Jetsons Color Palette */
+            --sky-light: #87CEEB;
+            --sky-gradient-top: #B8E0F0;
+            --sky-gradient-bottom: #E8D4B8;
+            --cloud-white: #FFFFFF;
+            --space-teal: #40E0D0;
+            --retro-orange: #FF7F50;
+            --retro-coral: #FF6B6B;
+            --retro-magenta: #C850C0;
+            --retro-purple: #6B5B95;
+            --jetsons-blue: #4A90D9;
+            --text-dark: #2D3748;
+            --text-muted: #5A6778;
+            
+            /* Source Colors */
+            --flipboard-red: #e12828;
+            --substack-orange: #ff6719;
+            --mastodon-purple: #6364ff;
+            
+            /* Spacing & Sizing */
+            --radius-bubble: 24px;
+            --radius-card: 16px;
+            --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+            
+            /* Fonts */
+            --font-display: 'Quicksand', 'Comic Sans MS', cursive, sans-serif;
+            --font-body: 'Nunito', 'Arial Rounded MT Bold', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(180deg, var(--sky-gradient-top) 0%, var(--sky-light) 30%, var(--sky-gradient-bottom) 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Floating clouds background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(ellipse 120px 40px at 10% 15%, rgba(255,255,255,0.7) 0%, transparent 70%),
+                radial-gradient(ellipse 80px 30px at 85% 25%, rgba(255,255,255,0.6) 0%, transparent 70%),
+                radial-gradient(ellipse 100px 35px at 60% 10%, rgba(255,255,255,0.5) 0%, transparent 70%),
+                radial-gradient(ellipse 90px 32px at 25% 35%, rgba(255,255,255,0.4) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Banner */
+        .banner {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            border-radius: 0 0 var(--radius-bubble) var(--radius-bubble);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Header Info */
+        .header-info {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+        }
+
+        .header-info p {
+            font-family: var(--font-display);
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Filter Buttons */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.2rem;
+            border: 3px solid transparent;
+            background: var(--cloud-white);
+            border-radius: 2rem;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .filter-btn.active {
+            background: var(--jetsons-blue);
+            color: white;
+            border-color: var(--retro-purple);
+        }
+
+        .filter-btn[data-source="flipboard"].active {
+            background: var(--flipboard-red);
+        }
+
+        .filter-btn[data-source="substack"].active {
+            background: var(--substack-orange);
+        }
+
+        .filter-btn[data-source="mastodon"].active {
+            background: var(--mastodon-purple);
+        }
+
+        /* Feed Grid */
+        .feed-grid {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        /* Feed Card */
+        .feed-card {
+            background: var(--cloud-white);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: grid;
+            grid-template-columns: 1fr;
+            border: 3px solid transparent;
+        }
+
+        .feed-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feed-card.has-image {
+            grid-template-columns: 1fr 200px;
+        }
+
+        .feed-card.pinned {
+            border-color: var(--retro-orange);
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFFFFF 100%);
+        }
+
+        .feed-card.pinned::before {
+            content: '📌 Pinned';
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--retro-orange);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+        }
+
+        .feed-card.pinned {
+            position: relative;
+            margin-top: 0.5rem;
+        }
+
+        /* Card Content */
+        .card-content {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .source-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: white;
+        }
+
+        .source-badge.flipboard { background: var(--flipboard-red); }
+        .source-badge.substack { background: var(--substack-orange); }
+        .source-badge.mastodon { background: var(--mastodon-purple); }
+
+        .card-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-left: auto;
+        }
+
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.4;
+            color: var(--text-dark);
+        }
+
+        .card-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .card-title a:hover {
+            color: var(--jetsons-blue);
+        }
+
+        .card-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: linear-gradient(135deg, var(--sky-light) 0%, var(--space-teal) 100%);
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .tag:hover {
+            transform: scale(1.05);
+        }
+
+        /* Card Image */
+        .card-image {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--sky-light) 0%, var(--space-teal) 100%);
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .feed-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 2rem;
+        }
+
+        .footer p {
+            font-family: var(--font-display);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--jetsons-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .feed-card.has-image {
+                grid-template-columns: 1fr;
+            }
+
+            .card-image {
+                height: 180px;
+                order: -1;
+            }
+
+            .filters {
+                gap: 0.4rem;
+            }
+
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feed-card {
+            animation: fadeInUp 0.4s ease forwards;
+        }
+
+        .feed-card:nth-child(1) { animation-delay: 0.05s; }
+        .feed-card:nth-child(2) { animation-delay: 0.1s; }
+        .feed-card:nth-child(3) { animation-delay: 0.15s; }
+        .feed-card:nth-child(4) { animation-delay: 0.2s; }
+        .feed-card:nth-child(5) { animation-delay: 0.25s; }
+
+        /* Hidden class for filtering */
+        .feed-card.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Banner -->
+        <header class="banner">
+            <img src="banner.jpg" alt="News with Wes Fryer - A futuristic cityscape with social media icons featuring Flipboard, Substack, Mastodon, Facebook, and YouTube integrated into a Jetsons-style scene with flying vehicles and holographic displays">
+        </header>
+
+        <!-- Header Info -->
+        <div class="header-info">
+            <p>Curated news and articles from across the web</p>
+            <div class="last-updated">
+                <span>🔄</span>
+                <span>Updated: January 18, 2026 at 8:30 PM</span>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <button class="filter-btn active" data-source="all">🌐 All Sources</button>
+            <button class="filter-btn" data-source="flipboard">📰 Flipboard</button>
+            <button class="filter-btn" data-source="substack">✍️ Substack</button>
+            <button class="filter-btn" data-source="mastodon">🐘 Mastodon</button>
+        </div>
+
+        <!-- Feed Items -->
+        <main class="feed-grid">
+
+            <!-- Pinned Example -->
+            <article class="feed-card has-image pinned" data-source="substack">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="source-badge substack">✍️ Substack</span>
+                        <span class="card-date">2h ago</span>
+                    </div>
+                    <h2 class="card-title">
+                        <a href="#" target="_blank" rel="noopener">Building Resilient Communities in the Age of AI</a>
+                    </h2>
+                    <p class="card-description">How can we leverage technology to strengthen our communities while protecting human connection? This deep dive explores practical strategies for educators and community leaders.</p>
+                    <div class="card-tags">
+                        <span class="tag">#community</span>
+                        <span class="tag">#education</span>
+                        <span class="tag">#AI</span>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop" alt="" loading="lazy">
+                </div>
+            </article>
+
+            <!-- Flipboard Example -->
+            <article class="feed-card has-image" data-source="flipboard">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="source-badge flipboard">📰 Flipboard</span>
+                        <span class="card-date">4h ago</span>
+                    </div>
+                    <h2 class="card-title">
+                        <a href="#" target="_blank" rel="noopener">The Future of Media Literacy Education</a>
+                    </h2>
+                    <p class="card-description">A comprehensive look at how schools are adapting their curricula to help students navigate an increasingly complex information landscape.</p>
+                    <div class="card-tags">
+                        <span class="tag">#medialiteracy</span>
+                        <span class="tag">#education</span>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop" alt="" loading="lazy">
+                </div>
+            </article>
+
+            <!-- Mastodon Example -->
+            <article class="feed-card" data-source="mastodon">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="source-badge mastodon">🐘 Mastodon</span>
+                        <span class="card-date">6h ago</span>
+                    </div>
+                    <h2 class="card-title">
+                        <a href="#" target="_blank" rel="noopener">Excited to share this resource on digital citizenship for middle school students! Great discussion points for classroom use.</a>
+                    </h2>
+                    <p class="card-description">The Federated Reader shares curated educational content from across the fediverse.</p>
+                    <div class="card-tags">
+                        <span class="tag">#news</span>
+                        <span class="tag">#digitalcitizenship</span>
+                        <span class="tag">#edtech</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Another Flipboard -->
+            <article class="feed-card has-image" data-source="flipboard">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="source-badge flipboard">📰 Flipboard</span>
+                        <span class="card-date">Yesterday</span>
+                    </div>
+                    <h2 class="card-title">
+                        <a href="#" target="_blank" rel="noopener">Why Critical Thinking Skills Matter More Than Ever</a>
+                    </h2>
+                    <p class="card-description">In an era of information overload, teaching students to evaluate sources and think critically has become essential. Here's what the research tells us.</p>
+                    <div class="card-tags">
+                        <span class="tag">#criticalthinking</span>
+                        <span class="tag">#STEM</span>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=300&fit=crop" alt="" loading="lazy">
+                </div>
+            </article>
+
+            <!-- Substack Example -->
+            <article class="feed-card has-image" data-source="substack">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="source-badge substack">✍️ Substack</span>
+                        <span class="card-date">2 days ago</span>
+                    </div>
+                    <h2 class="card-title">
+                        <a href="#" target="_blank" rel="noopener">Resist and Heal: Finding Hope Through Community Action</a>
+                    </h2>
+                    <p class="card-description">This week's newsletter explores how local organizing efforts are making a difference in communities across America. Plus: Resources for getting involved.</p>
+                    <div class="card-tags">
+                        <span class="tag">#community</span>
+                        <span class="tag">#activism</span>
+                        <span class="tag">#hope</span>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&h=300&fit=crop" alt="" loading="lazy">
+                </div>
+            </article>
+
+            <!-- Mastodon Example 2 -->
+            <article class="feed-card" data-source="mastodon">
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="source-badge mastodon">🐘 Mastodon</span>
+                        <span class="card-date">3 days ago</span>
+                    </div>
+                    <h2 class="card-title">
+                        <a href="#" target="_blank" rel="noopener">New report from UNESCO on AI in education - must read for anyone working in edtech. Link in thread. 🧵</a>
+                    </h2>
+                    <p class="card-description">Thread discussing the implications of the new UNESCO guidelines for AI implementation in educational settings.</p>
+                    <div class="card-tags">
+                        <span class="tag">#news</span>
+                        <span class="tag">#UNESCO</span>
+                        <span class="tag">#AIinEducation</span>
+                    </div>
+                </div>
+            </article>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by open web feeds • Curated by <a href="https://wesfryer.com">Wes Fryer</a></p>
+            <div class="footer-links">
+                <a href="https://healourculture.org">🖐️ Heal Our Culture</a>
+                <a href="https://resistandheal.com">❤️ Resist and Heal</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Simple client-side filtering
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const source = btn.dataset.source;
+                
+                // Filter cards
+                document.querySelectorAll('.feed-card').forEach(card => {
+                    if (source === 'all' || card.dataset.source === source) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
