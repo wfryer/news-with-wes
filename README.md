@@ -46,13 +46,15 @@ To add or modify feeds, edit the $feeds array in generate.php. Each feed entry s
 
 Current primary categories:
 
-Flipboard: iReading by Wes.
+Flipboard: iReading by Wes magazine in Flipboard.
 
-Wes' Blogs: Unified filter for all Substack-based publications (includes orange branding).
+Wes' Blogs: Unified filter for all Substack-based publications and several WordPress blogs.
 
-Cook With Wes: WordPress-based cooking and recipe feed.
+Cook With Wes: WordPress-based cooking and recipe feed, and YouTube playlist videos about cooking
 
-Federated Reader: Curated Mastodon social feed.
+Federated Reader: Curated Mastodon social feed for FederatedReader - **[see its GitHub project](https://github.com/wfryer/federated-reader-bot)**
+
+Wes' Video Updates: Single playlist of videos
 
 
 ## 📂 File Structure
