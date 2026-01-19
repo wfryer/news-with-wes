@@ -27,17 +27,6 @@ This project functions as a background engine that fetches content from multiple
 * **Data Handling**: XML/RSS parsing and OpenGraph metadata extraction.
 * **Automation**: Cron-driven task execution.
 
-## 📂 File Structure
-
-```text
-/[project_directory]/
-├── generate.php      # The main engine; handles fetching, caching, and generation.
-├── index.html        # The generated static output (visible to users).
-├── pinned.txt        # Text file to manage URLs of "pinned" featured posts.
-├── banner.jpg        # Custom project header image.
-├── error.log         # Log for monitoring performance and cron job errors.
-└── cache/            # Directory for storing fetched images and feed data.
-
 ## ⚙️ Installation & Setup
 1. Upload Files
 Upload the project files to your server directory. Ensure the cache/ directory exists and is writable by the server.
@@ -64,3 +53,16 @@ Wes' Blogs: Unified filter for all Substack-based publications (includes orange 
 Cook With Wes: WordPress-based cooking and recipe feed.
 
 Federated Reader: Curated Mastodon social feed.
+
+
+## 📂 File Structure
+
+```text
+/[project_directory]/
+├── generate.php      # The main engine; handles fetching, caching, and generation.
+├── index.html        # The generated static output (visible to users).
+├── pinned.txt        # Text file to manage URLs of "pinned" featured posts.
+├── banner.jpg        # Custom project header image.
+├── error.log         # Log for monitoring performance and cron job errors.
+└── cache/            # Directory for storing fetched images and feed data.
+
