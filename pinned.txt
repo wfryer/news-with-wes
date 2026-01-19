@@ -1,0 +1,17 @@
+# Pinned Posts for News with Wes Fryer
+# =====================================
+# Add one URL per line to pin posts to the top of the feed.
+# Lines starting with # are comments and will be ignored.
+# 
+# Example:
+# https://resistandheal.substack.com/p/some-important-post
+# https://mastodon.social/@federatedreader/123456789
+#
+# To pin a post:
+# 1. Find the post URL from the feed
+# 2. Add it on a new line below
+# 3. Wait for the next cron run (or run generate.php manually)
+#
+# Pinned posts will appear at the top with a 📌 badge.
+# =====================================
+
